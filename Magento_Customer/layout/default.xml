@@ -1,0 +1,68 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- let's create a general abstract component that will be loaded first -->
+        <referenceContainer name="after.body.start">
+            <block template="Magento_Customer::ui.phtml">
+                <arguments>
+                    <!-- some custom variables which could be used in a phtml template -->
+                    <!-- scope has to be the same as a component name -->
+                    <argument name="scope" xsi:type="string">customerProvider</argument>
+                    <argument name="without_knockout_template" xsi:type="boolean">true</argument>
+
+                    <!-- prepare a jsLayout structure -->
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <!-- name has to be the same as the scope argument -->
+                            <item name="customerProvider" xsi:type="array">
+                                <!-- here we need a model component that will send one request to BE to get customer data updates -->
+                                <item name="component" xsi:type="string">Magento_Customer/js/model/customer-data-abstract</item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+
+        <!-- just duplicated custom components below -->
+        <!-- the structure as for customerProvider component -->
+        <referenceContainer name="content">
+            <block template="Magento_Customer::ui.phtml">
+                <arguments>
+                    <argument name="scope" xsi:type="string">custom1</argument>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="custom1" xsi:type="array">
+                                <item name="component" xsi:type="string">Magento_Customer/js/view/custom1</item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+            <block template="Magento_Customer::ui.phtml">
+                <arguments>
+                    <argument name="scope" xsi:type="string">custom2</argument>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="custom2" xsi:type="array">
+                                <item name="component" xsi:type="string">Magento_Customer/js/view/custom2</item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+            <block template="Magento_Customer::ui.phtml">
+                <arguments>
+                    <argument name="scope" xsi:type="string">custom3</argument>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="custom3" xsi:type="array">
+                                <item name="component" xsi:type="string">Magento_Customer/js/view/custom3</item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

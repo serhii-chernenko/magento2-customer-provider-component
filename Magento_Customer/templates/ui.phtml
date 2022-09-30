@@ -1,0 +1,12 @@
+<?php
+/**
+ * @var Magento\Framework\View\Element\Template $block
+ * @var Magento\Framework\Escaper $escaper
+ */
+?>
+<div data-mage-init='{"Magento_Ui/js/core/app": <?= $block->getJsLayout(); ?>}'
+     data-bind="scope: '<?= $block->getData('scope') ?>'">
+    <?php if (!$block->getData('without_knockout_template')) : ?>
+        <!-- ko template: getTemplate() --><!-- /ko -->
+    <?php endif; ?>
+</div>
