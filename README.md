@@ -4,7 +4,7 @@ Create an abstract component with a customer data to not duplicate the code to e
 ## Main Idea
 You need to show a different content for guests and logged in customer in cached pages.
 
-### Fast implementation - call abservable
+### Fast implementation - call observable
 You can create a component where you will call a data from customer section once
 ```js
 define(['uiElement', 'Magento_Customer/js/customer-data'], (uiElement, customerData) => {
